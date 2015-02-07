@@ -1,7 +1,8 @@
 //
-//  TUSafariActivity.h
+//  AJSafariActivity.h
 //
-//  Created by David Beck on 11/30/12.
+//  Based upon TUSafariActivity
+//	Created by David Beck on 11/30/12.
 //  Copyright (c) 2012 ThinkUltimate. All rights reserved.
 //
 //  http://github.com/davbeck/TUSafariActivity
@@ -27,10 +28,10 @@
 //  OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "TUSafariActivity.h"
+#import "AJSafariActivity.h"
 
 
-@implementation TUSafariActivity
+@implementation AJSafariActivity
 {
 	NSURL *_URL;
 }
@@ -42,16 +43,16 @@
 
 - (NSString *)activityTitle
 {
-    NSURL *resourcesURL = [[NSBundle mainBundle] URLForResource:@"TUSafariActivity" withExtension:@"bundle"];
+    NSURL *resourcesURL = [[NSBundle mainBundle] URLForResource:@"AJSafariActivity" withExtension:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithURL:resourcesURL];
-    NSString *defaultString = [bundle localizedStringForKey:@"Open in Safari" value:@"Open in Safari" table:@"TUSafariActivity"];
+    NSString *defaultString = [bundle localizedStringForKey:@"Open in Safari" value:@"Open in Safari" table:@"AJSafariActivity"];
     
     return [[NSBundle mainBundle] localizedStringForKey:@"Open in Safari" value:defaultString table:nil];
 }
 
 - (UIImage *)activityImage
 {
-	return [UIImage imageNamed:@"TUSafariActivity.bundle/Safari_iOS8"];
+	return [UIImage imageNamed:@"Safari_iOS8"]; //AJSafariActivity.bundle/
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems

@@ -1,6 +1,7 @@
 //
-//  TUSafariActivity.h
+//  AJSafariActivity.h
 //
+//	Based upon TUSafariActivity
 //  Created by David Beck on 11/30/12.
 //  Copyright (c) 2012 ThinkUltimate. All rights reserved.
 //
@@ -29,6 +30,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TUSafariActivity : UIActivity
+@interface AJSafariActivity : UIActivity
 
 @end
