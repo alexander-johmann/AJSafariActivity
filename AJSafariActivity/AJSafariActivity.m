@@ -36,6 +36,17 @@
 	NSURL *_URL;
 }
 
+-(NSBundle *)bundle
+{
+	NSURL *resourcesURL = [[NSBundle mainBundle] URLForResource:@"AJSafariActivity" withExtension:@"bundle"];
+
+	if (resourcesURL)
+	{
+		return [NSBundle bundleWithURL:resourcesURL];
+	}
+	return [NSBundle mainBundle];
+}
+
 - (NSString *)activityType
 {
 	return NSStringFromClass([self class]);
@@ -43,16 +54,13 @@
 
 - (NSString *)activityTitle
 {
-    NSURL *resourcesURL = [[NSBundle mainBundle] URLForResource:@"AJSafariActivity" withExtension:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithURL:resourcesURL];
-    NSString *defaultString = [bundle localizedStringForKey:@"Open in Safari" value:@"Open in Safari" table:@"AJSafariActivity"];
-    
-    return [[NSBundle mainBundle] localizedStringForKey:@"Open in Safari" value:defaultString table:nil];
+	return NSLocalizedStringFromTableInBundle(@"Open in Safari", NSStringFromClass([self class]), [self bundle], nil);
 }
 
 - (UIImage *)activityImage
 {
-	return [UIImage imageNamed:@"Safari_iOS8"]; //AJSafariActivity.bundle/
+	NSString *filename = [NSString stringWithFormat:@"%@", [self class]];
+	return [UIImage imageNamed:filename];
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems
@@ -62,7 +70,7 @@
 			return YES;
 		}
 	}
-	
+
 	return NO;
 }
 
@@ -78,7 +86,7 @@
 - (void)performActivity
 {
 	BOOL completed = [[UIApplication sharedApplication] openURL:_URL];
-	
+
 	[self activityDidFinish:completed];
 }
 
